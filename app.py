@@ -14,10 +14,14 @@ def webhook():
 
   # We don't want to reply to ourselves!
   if data['name'] != 'Test Bot':
-    msg = '{}, you sent "{}".'.format(data['name'], data['text'])
+    msg = format_message()
     send_message(msg)
 
   return "ok", 200
+
+def format_message():
+    formatted_msg = '{}, you sent "{}".'.format(data['name'], data['text'])
+    return formatted_msg
 
 def send_message(msg):
     url  = 'https://api.groupme.com/v3/bots/post'
