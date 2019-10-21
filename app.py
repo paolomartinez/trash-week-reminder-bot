@@ -14,12 +14,12 @@ def webhook():
 
   # We don't want to reply to ourselves!
   if data['name'] != 'Test Bot':
-    msg = format_message()
+    msg = format_message(data)
     send_message(msg)
 
   return "ok", 200
 
-def format_message():
+def format_message(data):
     formatted_msg = '{}, you sent "{}".'.format(data['name'], data['text'])
     return formatted_msg
 
