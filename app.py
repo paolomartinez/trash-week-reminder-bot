@@ -13,8 +13,8 @@ def webhook():
   data = request.get_json()
 
   # We don't want to reply to ourselves!
-  if data['name'] != 'Test Bot':
-    msg = format_message(data)
+  if data['name'] != 'Test Bot' and '!help' in data['text'].lower():
+    msg = 'Hi {}! Every Monday at 7pm I will remind you all to take out the trash bins!'.format(data['name'])
     send_message(msg)
 
   return "ok", 200
@@ -25,7 +25,6 @@ def format_message(data):
 
 def send_message(msg):
     url  = 'https://api.groupme.com/v3/bots/post'
-
     data = {
             'bot_id' : os.getenv('GROUPME_BOT_ID'),
             'text'   : msg,
