@@ -41,23 +41,23 @@ def trash_week_reminder_random():
 def rent_reminder_job():
     rent_payment_reminder()
 
-@sched.scheduled_job('cron', day='1st mon', hour=16, minute=30)
+@sched.scheduled_job('cron', day='1st mon', hour=18, minute=30)
 def trash_job_pj():
     trash_week_reminder_pj()
 
-@sched.scheduled_job('cron', day='2nd mon', hour=16, minute=30)
+@sched.scheduled_job('cron', day='2nd mon', hour=18, minute=30)
 def trash_job_drex():
     trash_week_reminder_drex()
 
-@sched.scheduled_job('cron', day='3rd mon', hour=16, minute=30)
+@sched.scheduled_job('cron', day='3rd mon', hour=18, minute=30)
 def trash_job_george():
     trash_week_reminder_george()
 
-@sched.scheduled_job('cron', day='4th mon', hour=16, minute=30)
+@sched.scheduled_job('cron', day='4th mon', hour=18, minute=30)
 def trash_job_mike():
     trash_week_reminder_mike()
 
-@sched.scheduled_job('cron', day='5th mon', hour=16, minute=30)
+@sched.scheduled_job('cron', day='5th mon', hour=18, minute=30)
 def trash_job_random():
     trash_week_reminder_random()
 
