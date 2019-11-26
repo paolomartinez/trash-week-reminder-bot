@@ -8,15 +8,18 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST','GET'])
 def webhook():
-  data = request.get_json()
+  if request.method == 'POST':
+    data = request.get_json()
+    # We don't want to reply to ourselves!
+    if data['name'] != 'Test Bot' and '!help' in data['text'].lower():
+      msg = 'Hi {}! Every Monday at 6:30pm I will remind you all to take out the trash bins!'.format(data['name'])
+      send_message(msg)
 
-  # We don't want to reply to ourselves!
-  if data['name'] != 'Test Bot' and '!help' in data['text'].lower():
-    msg = 'Hi {}! Every Monday at 6:30pm I will remind you all to take out the trash bins!'.format(data['name'])
-    send_message(msg)
-
+  if request.method == 'GET':
+    print('App is awake')
+    
   return "ok", 200
 
 def format_message(data):
