@@ -5,7 +5,7 @@ import json
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 """
-
+import requests
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -29,6 +29,7 @@ def format_message(data):
     return formatted_msg
 
 def send_message(msg):
+    """
     url  = 'https://api.groupme.com/v3/bots/post'
     data = {
             'bot_id' : os.getenv('GROUPME_BOT_ID'),
@@ -36,3 +37,11 @@ def send_message(msg):
             }
     request = Request(url, urlencode(data).encode())
     json = urlopen(request).read().decode()
+    """
+    url     = 'https://api.groupme.com/v3/bots/post'
+    payload = {          
+                'bot_id' : os.getenv('GROUPME_BOT_ID'),
+                'text'   : msg,
+              }
+    headers = {}
+    res = requests.post(url, data=payload, headers=headers)
