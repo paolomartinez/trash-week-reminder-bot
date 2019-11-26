@@ -1,5 +1,6 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 import random
+import requests
 import app
 
 sched = BlockingScheduler()
@@ -66,5 +67,10 @@ def trash_job_mike():
 def trash_job_random():
     trash_week_reminder_random()
     print('SUCCESS! Ran random trash week reminder job for the 5th Monday')
+
+@sched.scheduled_job('interval', seconds=10)
+def keep_dyno_alive():
+    url     = 'https://trash-week-bot.herokuapp.com/'
+    res = requests.get(url)
 
 sched.start()
