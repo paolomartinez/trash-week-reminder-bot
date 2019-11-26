@@ -40,25 +40,31 @@ def trash_week_reminder_random():
 @sched.scheduled_job('cron', day=25, hour=19, minute=30)
 def rent_reminder_job():
     rent_payment_reminder()
+    print('SUCCESS! Ran rent reminder job')
 
 @sched.scheduled_job('cron', day='1st mon', hour=18, minute=30)
 def trash_job_pj():
     trash_week_reminder_pj()
+    print('SUCCESS! Ran trash week reminder job for PJ')
 
 @sched.scheduled_job('cron', day='2nd mon', hour=18, minute=30)
 def trash_job_drex():
     trash_week_reminder_drex()
+    print('SUCCESS! Ran trash week reminder job for Drex')
 
 @sched.scheduled_job('cron', day='3rd mon', hour=18, minute=30)
 def trash_job_george():
     trash_week_reminder_george()
+    print('SUCCESS! Ran trash week reminder job for George')
 
 @sched.scheduled_job('cron', day='4th mon', hour=18, minute=30)
 def trash_job_mike():
     trash_week_reminder_mike()
+    print('SUCCESS! Ran trash week reminder job for Mike')
 
 @sched.scheduled_job('cron', day='5th mon', hour=18, minute=30)
 def trash_job_random():
     trash_week_reminder_random()
+    print('SUCCESS! Ran random trash week reminder job for the 5th Monday')
 
 sched.start()
