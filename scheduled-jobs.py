@@ -73,8 +73,4 @@ def keep_dyno_alive():
     url     = 'https://trash-week-bot.herokuapp.com/'
     res = requests.get(url)
 
-@sched.scheduled_job('interval', minutes=5)
-def test_job():
-    app.send_message('This is a test that the scheduled job works')
-
 sched.start()
