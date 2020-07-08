@@ -22,8 +22,8 @@ def trash_week_reminder_drex():
     msg = 'Drex' + TRASH_WEEK_BASE_MESSAGE
     app.send_message(msg)
 
-def trash_week_reminder_george():
-    msg = 'George' + TRASH_WEEK_BASE_MESSAGE
+def trash_week_reminder_eugene():
+    msg = 'Eugene' + TRASH_WEEK_BASE_MESSAGE
     app.send_message(msg)
 
 def trash_week_reminder_mike():
@@ -55,8 +55,8 @@ def trash_job_drex():
 
 @sched.scheduled_job('cron', day='3rd mon', hour=18, minute=30)
 def trash_job_george():
-    trash_week_reminder_george()
-    print('SUCCESS! Ran trash week reminder job for George')
+    trash_week_reminder_eugene()
+    print('SUCCESS! Ran trash week reminder job for Eugene')
 
 @sched.scheduled_job('cron', day='4th mon', hour=18, minute=30)
 def trash_job_mike():
@@ -72,5 +72,9 @@ def trash_job_random():
 def keep_dyno_alive():
     url     = 'https://trash-week-bot.herokuapp.com/'
     res = requests.get(url)
+
+@sched.scheduled_job('interval', minutes=5)
+def test_job():
+    app.send_message('This is a test that the scheduled job works')
 
 sched.start()
