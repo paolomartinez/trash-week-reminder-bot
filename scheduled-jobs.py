@@ -6,6 +6,8 @@ import app
 sched = BlockingScheduler()
 
 # CONSTANTS
+RANDOM_PREFIX_LIST = ['Good googly moogly! ', 'feelsbadman. ', 'heyyyyyy :) ur gonna hate me but ', 'poggers! ']
+RANDOM_CHOICE_MESSAGE = 'You were randomly selected on this fifth Monday. '
 TRASH_WEEK_BASE_MESSAGE = ', it is your week to take out the trash'
 HOUSEMATE_LIST = ['PJ', 'Mike', 'Drex', 'Eugene']
 
@@ -33,7 +35,8 @@ def trash_week_reminder_mike():
 # Choose a random housemate from the housemate list, then append to base trash reminder message
 def trash_week_reminder_random():
     housemate = random.choice(HOUSEMATE_LIST)
-    msg = housemate + TRASH_WEEK_BASE_MESSAGE
+    random_msg = random.choice(RANDOM_PREFIX_LIST) + RANDOM_CHOICE_MESSAGE
+    msg = random_msg + housemate + TRASH_WEEK_BASE_MESSAGE
     app.send_message(msg)
 
 # SCHEDULED JOBS
