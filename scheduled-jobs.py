@@ -13,7 +13,7 @@ HOUSEMATE_LIST = ['PJ', 'Mike', 'Drex', 'Eugene']
 
 # REMINDERS
 def rent_payment_reminder():
-    msg = 'Reminder to pay Mike rent!'
+    msg = 'Reminder to pay Mike rent via Zelle!'
     app.send_message(msg)
 
 def trash_week_reminder_pj():
@@ -41,7 +41,7 @@ def trash_week_reminder_random():
 
 # SCHEDULED JOBS
 # Send rent reminder message on the 25th of every month at 7:30pm
-@sched.scheduled_job('cron', day=25, hour=19, minute=30)
+@sched.scheduled_job('cron', day=20, hour=19, minute=30)
 def rent_reminder_job():
     rent_payment_reminder()
     print('SUCCESS! Ran rent reminder job')
